@@ -1,0 +1,11 @@
+#!bash
+
+alias docko=docker-compose
+alias docko-run='docko run --rm server'
+alias docko-debug='docko-run --rm --service-ports server'
+
+function ___docko-psql {
+  docko run --rm db psql -h db $1 postgres
+}
+
+alias docko-psql='___docko-psql'
