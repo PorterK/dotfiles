@@ -9,3 +9,9 @@ function ___docko-psql {
 }
 
 alias docko-psql='___docko-psql'
+
+function ___docko-house {
+  docko exec db psql house_locator -U postgres
+}
+
+alias docko-house-db='___docko-house'
