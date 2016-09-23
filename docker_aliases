@@ -16,7 +16,7 @@ function ___docko-house {
 
 alias docko-house-db='___docko-house'
 
-function ___dock-restart-tail{
+function ___docko-restart-tail {
   docko restart && docko logs -f --tail=100
 }
 
