@@ -75,20 +75,20 @@ if [[ "$TERM" != 'dumb' ]] && [[ -n "$BASH" ]]; then
     [[ "$TERM" != 'linux' && "$CF_REAL_TERM" != "eterm-color" ]] && PS1="${PS1}\[\e]2;\u@\H:\W\a"
 
     #use a red $ if you're root, white otherwise
-    #if [[ $WHOAMI = "root" ]]; then
-    #	  #red hostname
-	#      PS1="${PS1}${FG_RED}"
-    #else
-      	#green user@hostname
-     #	  PS1="${PS1}${FG_GREEN}"
-    #fi
+
+    # if [[ $WHOAMI = "root" ]]; then
+    # 	  #red hostname
+	  #    PS1="${PS1}${FG_RED}"
+    # else
+    #   	# green user@hostname
+    #  	  PS1="${PS1}${FG_GREEN}"
+    # fi
 
     GIT_PS1_SHOWDIRTYSTATE=1
     #working dir basename and prompt
-    PS1="${PS1}${FG_BLUE}\W${FG_RED}\$(__git_ps1 "[%s]")${FG_BLUE}\$ ${NO_COLOR}"
+    PS1="${FG_BLUE}\W${FG_RED}\$(__git_ps1 "[%s]")${FG_GREEN}\$ ${NO_COLOR}"
 fi
 
 git config --global color.ui auto
 
 alias unmerged-branches="comm -12 <(git branch -a --no-merge master | sort) <(git branch -a --no-merge develop | sort)"
-
