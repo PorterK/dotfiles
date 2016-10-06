@@ -62,9 +62,9 @@ complete -o default -o nospace -F _git_checkout gda
 
 FG_BLACK="\[\033[01;30m\]"
 FG_WHITE="\[\033[01;37m\]"
-FG_RED="\[\033[01;31m\]"
+FG_RED="\[\033[01;91m\]"
 FG_GREEN="\[\033[01;32m\]"
-FG_BLUE="\[\033[01;34m\]"
+FG_BLUE="\[\033[01;96m\]"
 NO_COLOR="\[\e[0m\]"
 
 #build PS1
@@ -86,7 +86,7 @@ if [[ "$TERM" != 'dumb' ]] && [[ -n "$BASH" ]]; then
 
     GIT_PS1_SHOWDIRTYSTATE=1
     #working dir basename and prompt
-    PS1="${FG_BLUE}\W${FG_RED}\$(__git_ps1 "[%s]")${FG_GREEN}\$ ${NO_COLOR}"
+    PS1="${FG_RED}\W${FG_BLUE}\$(__git_ps1 "[%s]")${FG_GREEN}\$ ${NO_COLOR}"
 fi
 
 git config --global color.ui auto
