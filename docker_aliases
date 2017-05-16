@@ -28,4 +28,5 @@ alias docker-destroy='\
   sudo docker kill $(docker ps -q); \
   sudo docker rm $(docker ps -a -q); \
   sudo docker rmi $(docker images -q -f dangling=true); \
-  sudo docker rmi $(docker images -q -f) -f;'
+  sudo docker rmi $(docker images -q -f) -f; \
+  sudo docker volume rm $(docker volume ls -q)'
