@@ -21,3 +21,11 @@ function ___docko-restart-tail {
 }
 
 alias docko-restart-tail='___docko-restart-tail'
+
+alias docker-clean='docker rm -v $(docker ps -a -q -f status=exited) && docker volume rm $(docker volume ls -qf dangling=true)'
+
+alias docker-destroy='\
+  sudo docker kill $(docker ps -q); \
+  sudo docker rm $(docker ps -a -q); \
+  sudo docker rmi $(docker images -q -f dangling=true); \
+  sudo docker rmi $(docker images -q -f) -f;'
