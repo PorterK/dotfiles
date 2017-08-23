@@ -30,6 +30,12 @@ complete -o default -o nospace -F _git_add ga
 alias gaa="git add -A ."
 complete -o default -o nospace -F _git_add gaa
 
+function ___gbr() {
+  git branch -m "$1"
+}
+
+alias gbr=___gbr
+
 alias git-nuclear-option="git reset --hard; git clean -fd"
 alias gno="git-nuclear-option"
 
