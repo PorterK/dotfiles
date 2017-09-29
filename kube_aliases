@@ -47,3 +47,35 @@ function ___kube-proxy {
 }
 
 alias kube-proxy='___kube-proxy'
+
+function ___kube-create-configmap {
+  if [ -z "$1" ]
+  then
+    echo "No namespace passed"
+    return 0
+  else
+    if [ -z "$2" ]
+    then
+      echo "No configmap name passed"
+      return 0
+    else
+      if [ -z "$3" ]
+      then
+        echo "No filepath passed"
+        return 0
+      else
+        local NAMESPACE="$1"
+        local MAPNAME="$2"
+        local FILEPATH="$3"
+
+        kubectl delete -n "$NAMESPACE" configmap "$MAPNAME"
+
+        kubectl create configmap "$MAPNAME" -n "$NAMESPACE" --from-file="$FILEPATH"
+
+        kubectl get -n "$NAMESPACE" configmap "$MAPNAME" -o yaml
+      fi
+    fi
+  fi
+}
+
+alias kube-create-configmap='___kube-create-configmap'
