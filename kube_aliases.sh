@@ -70,7 +70,7 @@ function ___kube-create-configmap {
 
         kubectl delete -n "$NAMESPACE" configmap "$MAPNAME"
 
-        kubectl create configmap "$MAPNAME" -n "$NAMESPACE" --from-file="$FILEPATH"
+        kubectl create -f "$FILEPATH"
 
         kubectl get -n "$NAMESPACE" configmap "$MAPNAME" -o yaml
       fi
