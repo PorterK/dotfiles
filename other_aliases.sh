@@ -1,3 +1,49 @@
 #!bash
 
+function showNuke {
+  cat << "EOF"
+    .................NUKEDNUKEDNUKEDNUKED.............
+    ..........NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED.....
+    .....NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED
+    .....NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED
+    .....NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED
+    .....NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED
+    .....NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED
+    ......NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED....
+    ..........NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED.....
+    ......................NUKEDNUKED..................
+    ......................NUKEDNUKED..................
+    ......................NUKEDNUKED..................
+    ......................NUKEDNUKED..................
+    ......................NUKEDNUKED..................
+    ......................NUKEDNUKED..................
+    ......................NUKEDNUKED..................
+    ......................NUKEDNUKED..................
+    .................NUKEDNUKEDNUKEDNUKED.............
+    .........NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED......
+    .......NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED...
+    NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED
+    *******************GROUND ZERO********************
+"EOF"
+EOF
+}
+
+function ___nuke {
+  if [ -z "$1" ]
+  then
+    echo "Please passs a directory"
+    return 0
+  fi
+
+  if [[ $1 =~ ^\/ ]]
+  then
+    echo "No"
+    return 0
+  fi
+
+  rm -rf "$1"
+  showNuke
+}
+
 alias py=python3
+alias nuke='___nuke'
