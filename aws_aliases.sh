@@ -1,5 +1,5 @@
 function ___aws-context {
-  FILE="$HOME/.aws/credentials_list"
+  FILE="${HOME}/.aws/credentials_list"
   if [ -z "$1" ]
   then
     echo "Please enter a context"
@@ -33,4 +33,27 @@ function ___aws-context {
   fi
 }
 
+function ___aws-which {
+  CREDENTIALS_FILE="${HOME}/.aws/credentials"
+  CREDENTIALS_LIST="${HOME}/.aws/credentials_list"
+
+  CURRENT_ACCESS_KEY="$( sed -n 2p < "$CREDENTIALS_FILE" )"
+  LINE="$( cat "$CREDENTIALS_LIST" | grep -n "$CURRENT_ACCESS_KEY")"
+
+  if [[ -z "$LINE" ]]
+  then
+    echo "Context not found in credentials list..."
+    return 0
+  else
+    LINE_NUMBER="$( echo "$LINE" | cut -f1 -d ":" )"
+
+    NAME_LINE="$(expr "$LINE_NUMBER" - 1)"
+
+    NAME="$( sed -n "${NAME_LINE}p" < "$CREDENTIALS_LIST" )"
+
+    echo Current context: "$NAME" | sed 's/[][]//g'
+  fi
+}
+
 alias aws-context='___aws-context'
+alias aws-which='___aws-which'
