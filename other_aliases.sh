@@ -1,7 +1,7 @@
 #!bash
 
 function showNuke {
-  cat << "EOF"
+  cat << EOF
     .................NUKEDNUKEDNUKEDNUKED.............
     ..........NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED.....
     .....NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED
