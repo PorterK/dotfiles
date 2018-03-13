@@ -105,3 +105,33 @@ function ___kube-context {
 }
 
 alias kube-context='___kube-context'
+
+function ___kube-create {
+  if [ -z "$1" ]
+  then
+    echo "You must enter a file name"
+    return 0
+  else
+    echo "File found, uploading..."
+
+    kubectl create -f "$1"
+  fi
+}
+
+alias kube-create='___kube-create'
+
+function ___kube-replace {
+  if [ -z "$1" ]
+  then
+    echo "You must enter a file name"
+    return 0
+  else
+    echo "Replacing "$1"..."
+
+    kubectl replace -f "$1" --force
+  fi
+}
+
+alias kube-create='___kube-create'
+
+alias kube='kubectl'
