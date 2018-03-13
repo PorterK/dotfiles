@@ -116,8 +116,7 @@ function ___kube-which {
 
     if [ -z "$DIFF" ]
     then
-      FILE_NAME="$( basename $CURRENT_FILE )"
-      FILE_NAME=${FILE_NAME%.config}
+      FILE_NAME="$( basename $CURRENT_FILE .config )"
       echo "Current context: "$FILE_NAME""
     fi
   done
