@@ -10,6 +10,7 @@ complete -o default -o nospace -F _git_log glg
 alias gdc='git diff --cached'
 complete -o default -o nospace -F _git_diff gdc
 alias gcm='git commit -m'
+alias gcmv='git commit -S -m'
 alias gc="git commit"
 alias gca='git commit -a'
 alias gcam='git commit -a -m'

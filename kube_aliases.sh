@@ -79,3 +79,29 @@ function ___kube-create-configmap {
 }
 
 alias kube-create-configmap='___kube-create-configmap'
+
+function ___kube-context {
+  CONFIG_FILE="${HOME}/.kube/config"
+  if [ -z "$1" ]
+  then
+    echo "Please enter a context"
+    return 0
+  else
+    CHOSEN_CONTEXT="${HOME}/.kube/configs/"$1".config"
+    if [[ -z "$( cat "$CHOSEN_CONTEXT" )" ]]
+    then
+      echo "Context not found"
+      return 0
+    else
+      echo Context found, switching context...
+
+      rm "$CONFIG_FILE"
+
+      cat "$CHOSEN_CONTEXT" >> "$CONFIG_FILE"
+
+      echo Current context: "$1"
+    fi
+  fi
+}
+
+alias kube-context='___kube-context'
