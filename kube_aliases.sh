@@ -132,6 +132,6 @@ function ___kube-replace {
   fi
 }
 
-alias kube-create='___kube-create'
+alias kube-replace='___kube-replace'
 
 alias kube='kubectl'
