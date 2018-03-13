@@ -106,6 +106,25 @@ function ___kube-context {
 
 alias kube-context='___kube-context'
 
+function ___kube-which {
+  CONFIG_FILE="${HOME}/.kube/config"
+  CONFIGS_DIRECTORY="${HOME}/.kube/configs"
+
+  for CURRENT_FILE in $CONFIGS_DIRECTORY/*.config
+  do
+    DIFF="$( diff "$CONFIG_FILE" "$CURRENT_FILE" )"
+
+    if [ -z "$DIFF" ]
+    then
+      FILE_NAME="$( basename $CURRENT_FILE )"
+      FILE_NAME=${FILE_NAME%.config}
+      echo "Current context: "$FILE_NAME""
+    fi
+  done
+}
+
+alias kube-which='___kube-which'
+
 function ___kube-create {
   if [ -z "$1" ]
   then
