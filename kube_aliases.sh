@@ -14,7 +14,7 @@ function ___kube-bash {
 
     if [ -z "$PODS" ]
     then
-      echo "Invalid namespace"
+      echo "Invalid namespace."
       return 0
     fi
 
