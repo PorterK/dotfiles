@@ -23,9 +23,26 @@ function showNuke {
     .........NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED......
     .......NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED...
     NUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKEDNUKED
-    *******************GROUND ZERO********************
-"EOF"
 EOF
+
+
+COUNT="$( echo -n $1 | wc -c )"
+
+STRING="$1"
+
+while [ $COUNT -le 49 ]
+do
+  (( COUNT++ ))
+  if [ $(($COUNT%2)) -eq 0 ]
+  then
+    STRING="*$STRING"
+  else
+    STRING="$STRING*"
+  fi
+done
+
+echo "    $STRING"
+
 }
 
 function ___nuke {
@@ -42,7 +59,7 @@ function ___nuke {
   fi
 
   rm -rf "$1"
-  showNuke
+  showNuke "$1"
 }
 
 alias py=python3
