@@ -62,5 +62,12 @@ function ___nuke {
   showNuke "$1"
 }
 
+function ___reload {
+  source ~/.bash_profile
+
+  echo "Bash profile reloaded."
+}
+
 alias py=python3
 alias nuke='___nuke'
+alias reload='___reload'
