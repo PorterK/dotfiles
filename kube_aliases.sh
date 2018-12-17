@@ -88,11 +88,8 @@ function ___kube-context {
     return 0
   else
     CHOSEN_CONTEXT="${HOME}/.kube/configs/"$1".config"
-    if [[ -z "$( cat "$CHOSEN_CONTEXT" )" ]]
+    if [ -f "$CHOSEN_CONTEXT" ]
     then
-      echo "Context not found"
-      return 0
-    else
       echo Context found, switching context...
 
       rm "$CONFIG_FILE"
@@ -100,6 +97,9 @@ function ___kube-context {
       cat "$CHOSEN_CONTEXT" >> "$CONFIG_FILE"
 
       echo Current context: "$1"
+    else
+      echo "Context not found"
+      return 0
     fi
   fi
 }
