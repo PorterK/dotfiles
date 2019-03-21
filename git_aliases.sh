@@ -98,3 +98,22 @@ fi
 git config --global color.ui auto
 
 alias unmerged-branches="comm -12 <(git branch -a --no-merge master | sort) <(git branch -a --no-merge develop | sort)"
+
+function ___gprune {
+  git remote prune origin --dry-run
+  git branch -a
+
+  COLLUMNS=50
+
+  read -r -p "Pruning will delete all branches except for develop and master, do you want to continue? [y/N] " response
+  if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+  then
+      git remote prune origin
+      git branch | grep -v "master" | grep -v "develop" | xargs git branch -D
+      echo "Done."
+  else
+      echo "ok"
+  fi
+}
+
+alias gprune='___gprune'
