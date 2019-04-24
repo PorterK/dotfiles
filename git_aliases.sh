@@ -117,3 +117,42 @@ function ___gprune {
 }
 
 alias gprune='___gprune'
+
+# Push current branch.
+function ___gpushc {
+  CURRENT_BRANCH="$(git branch | grep \* | cut -d ' ' -f2)"
+
+  git push origin $CURRENT_BRANCH
+}
+
+alias gpushc='___gpushc'
+
+# Pull current branch.
+
+function ___gpullc {
+  CURRENT_BRANCH="$(git branch | grep \* | cut -d ' ' -f2)"
+
+  git pull origin $CURRENT_BRANCH
+}
+
+alias gpullc='___gpullc'
+
+function ___gbrr {
+  if [ -z "$1" ]
+  then
+    echo "Please enter the old branch name."
+  else
+    if [ -z "$2" ]
+    then
+      echo "Please enter a new branch name."
+    else
+      gco $1
+      gbr $2
+      gpush origin --delete $1
+      gpush origin -u $2
+    fi
+  fi
+
+}
+
+alias gbrr='___gbrr'
