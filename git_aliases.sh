@@ -122,7 +122,7 @@ alias gprune='___gprune'
 function ___gpushc {
   CURRENT_BRANCH="$(git branch | grep \* | cut -d ' ' -f2)"
 
-  git push origin $CURRENT_BRANCH
+  gpush origin $CURRENT_BRANCH
 }
 
 alias gpushc='___gpushc'
@@ -132,7 +132,7 @@ alias gpushc='___gpushc'
 function ___gpullc {
   CURRENT_BRANCH="$(git branch | grep \* | cut -d ' ' -f2)"
 
-  git pull origin $CURRENT_BRANCH
+  gpull origin $CURRENT_BRANCH
 }
 
 alias gpullc='___gpullc'
