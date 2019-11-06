@@ -30,3 +30,5 @@ alias docker-destroy='\
   sudo docker rmi $(docker images -q -f dangling=true); \
   sudo docker rmi $(docker images -q -f) -f; \
   sudo docker volume rm $(docker volume ls -q)'
+
+alias ddv='docko down --volumes'
